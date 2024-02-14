@@ -1,16 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
-<template>
-    <div :style="{
-      width: width,
-      height: height,
-      color: textColor,
-      backgroundColor: bgColor,
-      borderRadius: radius
-    }">
-      <slot></slot>
-    </div>
-  </template>
-
 <script>
 export default {
   props: {
@@ -34,3 +21,15 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div :style="{
+    width: width,
+    height: height,
+    color: textColor,
+    backgroundColor: bgColor,
+    borderRadius: radius
+  }">
+    <slot></slot>
+  </div>
+</template>

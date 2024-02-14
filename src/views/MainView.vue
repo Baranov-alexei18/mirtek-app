@@ -1,17 +1,26 @@
 <template>
-  <div class="main-wrapper">
-    <SideBar/>
-    <AppMain/>
+  <div :class="{ 'dark-mode': getTheme }">
+    <HeaderMain />
+    <div class="main-wrapper" ref="mainSideBar">
+      <SideBar/>
+      <AppMain/>
+    </div>
   </div>
 </template>
 
 <script>
 import AppMain from '../components/layout/app-main/AppMain.vue'
+import HeaderMain from '../components/layout/header/HeaderMain.vue'
 import SideBar from '../components/layout/sidebar/SideBar.vue'
 
 export default {
   name: 'HomeView',
-  components: { SideBar, AppMain }
+  components: { HeaderMain, SideBar, AppMain },
+  computed: {
+    getTheme () {
+      return this.$store.state.darkTheme
+    }
+  }
 }
 </script>
 
@@ -19,6 +28,12 @@ export default {
 @import '../assets/styles/main.scss';
   .main-wrapper{
     display: flex;
-    margin-top: 12px;
+  }
+  .dark-mode{
+    background-color: rgb(51, 53, 54);
+    color: $grey-200;
+    svg{
+      filter: invert(70%);
+    }
   }
 </style>

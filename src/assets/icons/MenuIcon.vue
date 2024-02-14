@@ -1,3 +1,18 @@
+<script>
+import { useStore } from 'vuex'
+
+export default {
+  setup () {
+    const store = useStore()
+
+    const toggleSidebar = () => {
+      store.dispatch('toggleSidebar')
+    }
+
+    return { toggleSidebar }
+  }
+}
+</script>
 
 <template>
     <div class="menu-icon" @click="toggleSidebar">
@@ -8,20 +23,11 @@
     </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    toggleSidebar () {
-      this.$emit('toggle-sidebar')
-    }
-  }
-}
-</script>
-
 <style scoped lang="scss">
 @import '../styles/main.scss';
 .menu-icon {
   display: none;
+  margin-left: 16px;
   cursor: pointer;
 
   @media (max-width: 768px) {

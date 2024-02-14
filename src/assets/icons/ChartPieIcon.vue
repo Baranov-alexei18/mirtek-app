@@ -1,3 +1,8 @@
+<script>
+export default {
+  props: ['color']
+}
+</script>
 
 <template>
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -7,9 +12,3 @@
 <path xmlns="http://www.w3.org/2000/svg" d="M14.3999 2.70239C16.0603 3.13255 17.5754 3.99893 18.7882 5.21174C20.001 6.42454 20.8673 7.93964 21.2975 9.59999H14.3999V2.70239Z" :fill="color"/>
 </svg>
 </template>
-
-<script>
-export default {
-  props: ['color']
-}
-</script>

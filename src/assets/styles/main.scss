@@ -72,3 +72,8 @@ $medium-border-radius: 12px;
     height: $heigth;
     width: $width;
 }
+
+@mixin font-weight-elem($weight) {
+    font-size: 'Themesberg';
+    font-weight: $weight;
+}

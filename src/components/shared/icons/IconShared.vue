@@ -1,11 +1,7 @@
-<template>
-    <div class="icon-container">
-      <i :class="iconClasses"></i>
-      <div :style="dotStyles" v-if="showDot"></div>
-    </div>
-  </template>
-
 <script>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+
 export default {
   name: 'IconShared',
   props: {
@@ -18,13 +14,14 @@ export default {
       default: false
     }
   },
-  computed: {
-    iconClasses () {
-      return ['fas', this.icon]
-    },
-    dotStyles () {
-      if (!this.showDot) return {}
-      const styles = {
+  setup (props) {
+    const store = useStore()
+
+    const iconClasses = computed(() => ['fas', props.icon])
+
+    const dotStyles = computed(() => {
+      if (!props.showDot) return {}
+      return {
         width: '7px',
         height: '7px',
         borderRadius: '50%',
@@ -34,12 +31,21 @@ export default {
         top: '5px',
         right: '7px'
       }
+    })
 
-      return styles
-    }
+    const getTheme = computed(() => store.state.darkTheme)
+
+    return { iconClasses, dotStyles, getTheme }
   }
 }
 </script>
+
+<template>
+  <div class="icon-container" :class="{ 'dark-mode': getTheme  }">
+    <i :class="iconClasses"></i>
+    <div :style="dotStyles" v-if="showDot"></div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 @import '../../../assets/styles/main.scss';
@@ -52,5 +58,12 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .dark-mode{
+    background-color: rgb(51, 53, 54);
+    color: $grey-200 !important;
+    svg{
+      filter: invert(70%);
+    }
   }
   </style>

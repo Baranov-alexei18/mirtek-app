@@ -15,10 +15,6 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Данное приложение максимально соответсвует шаблону Figma.
+Реализована темная и светлая тема приложения.
+Чтобы перейти на страниу "NOT FOUND" надо в адресной строке добавить /error.

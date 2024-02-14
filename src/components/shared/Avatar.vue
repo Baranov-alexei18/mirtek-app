@@ -1,9 +1,3 @@
-<template>
-    <div class="avatar">
-      <img :src="url" :alt="altText" class="avatar-image">
-    </div>
-  </template>
-
 <script>
 export default {
   name: 'AppAvatar',
@@ -16,22 +10,25 @@ export default {
       type: String,
       default: 'User'
     }
-  },
-  computed: {
   }
 }
 </script>
 
+<template>
+  <div class="avatar">
+    <img :src="url" :alt="altText" class="avatar-image">
+  </div>
+</template>
+
 <style scoped lang="scss">
 @import '../../assets/styles/main.scss';
 .avatar {
-    @include element-size(32px, 32px);
-    border-radius: $base-border-radius;
-    overflow: hidden;
-
-    .avatar-image {
-    width: 100%;
-    height: auto;
+  @include element-size(32px, 32px);
+  border-radius: $base-border-radius;
+  overflow: hidden;
+  .avatar-image {
+  width: 100%;
+  height: auto;
   }
 }
 </style>

@@ -1,18 +1,7 @@
 
 <template>
-  <div>
-  <AppHeader></AppHeader>
   <router-view/>
-</div>
 </template>
-
-<script>
-import AppHeader from './components/layout/header/AppHeader'
-
-export default {
-  components: { AppHeader }
-}
-</script>
 
 <style lang="scss">
 @import 'assets/styles/main.scss';
@@ -27,6 +16,12 @@ export default {
 body{
   margin: 0;
   background-color: $grey-50;
+
+  main{
+    margin: 0;
+    box-sizing: content-box;
+    max-width: 100%;
+  }
 }
 nav {
   padding: 30px;

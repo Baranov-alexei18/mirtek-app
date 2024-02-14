@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ 'focused': isFocused }" class="input-container" @click="focusOn">
+    <div :class="{ 'focused': isFocused, 'dark-mode': getTheme }" class="input-search" @click="focusOn">
       <i class="fa-solid fa-magnifying-glass"></i>
       <input ref="inputField" type="serach" class="input-field" placeholder="Search" @blur="removeFocus">
     </div>
@@ -11,6 +11,11 @@ export default {
   data () {
     return {
       isFocused: false
+    }
+  },
+  computed: {
+    getTheme () {
+      return this.$store.state.darkTheme
     }
   },
   methods: {
@@ -26,12 +31,14 @@ export default {
 
 <style scoped lang="scss">
 @import '../../../assets/styles/main.scss';
-.input-container {
+.input-search {
     @include flex-center;
     position: relative;
     height: 45px;
     width: 402px;
-    border: 1px solid #ccc;
+    margin-left: 20px;
+    padding-left: 16px;
+    border: 1px solid $grey-50;
     border-radius: $base-border-radius;
     background-color: $grey-200;
     .input-icon {
@@ -45,13 +52,23 @@ export default {
   .input-field {
     height: 95%;
     width: 350px;
+    font-size: 16px;
     border: none;
+    padding-left: 12px;
     border-radius: $base-border-radius;
     background-color: inherit;
     outline: none;
+
 }
 }
 .focused {
-  border: 1px solid $grey-800;
+  border: 1px solid $grey-600;
 }
+.dark-mode{
+  color: $grey-400;
+  border: 1px solid $grey-600;
+  input{
+    color: $grey-400;
+  }
+  }
 </style>
